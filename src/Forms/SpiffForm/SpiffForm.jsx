@@ -70,7 +70,14 @@ export class SpiffForm extends Component {
                 status:"O",
                 TechFName:this.state.TechFName,
                 TechLName:this.state.TechLName,
+				FormID:new Date()
             }
+			if (this.props.user != undefined) {
+				newData.editor = [{
+					user:this.props.user,
+					date:new Date()
+				}]
+			}
             this.props.SaveFunction(newData)
             this.props.CloseFunction()
         }
