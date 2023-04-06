@@ -20,11 +20,20 @@ export class SpiffForm extends Component {
             Address:props.Address||"",
             WO:props.WO||"",
             SpiffFor:props.SpiffFor||"",
-            ReferTo:props.ReferTo||""
+            ReferTo:props.ReferTo||"",
+			reqClasses:{
+				TechFName:"",
+				TechLName:"",
+				CustFName:"",
+				CustLName:"",
+				Address:"",
+				WO:""
+			}
         }
 
         this.SetProperty = this.SetProperty.bind(this);
-        this.SubmitForm = this.SubmitForm.bind(this)
+        this.SubmitForm = this.SubmitForm.bind(this);
+		this.GetForm = this.GetForm.bind(this)
     }
 
     SetProperty(value, property) {
@@ -43,9 +52,18 @@ export class SpiffForm extends Component {
         this.state.WO==""||
         this.state.CustFName==""||
         this.state.CustLName=="") {
-            this.setState({
-                formIncomplete:true
-            })
+            let req = JSON.parse(JSON.stringify(this.state.reqClasses))
+			for (let innerkey in req) {
+				if (this.state[innerkey] == "") {
+					console.log("spiff form-item-empty", innerkey)
+					req[innerkey] = "form-item-empty"
+				} else {
+					req[innerkey] = ""
+				}
+			}
+			this.setState({
+				reqClasses:req
+			})
         } else {
             //Get the values of objects in state
             let SpiffFor = ""
@@ -83,6 +101,130 @@ export class SpiffForm extends Component {
         }
     }
 
+	GetForm() {
+		let formdata = [
+			{
+				value:"Tech ID",
+				class:"header spiff-form",
+				id:"Tech-Header"
+			},
+			{
+				selected:this.state.TechID,
+				list:this.props.UserList,
+				ChangeFunction:this.SetProperty,
+				data:"TechID",
+				inputType:"DropDown",
+				id:"Tech-ID"
+			},
+			{
+				value:"Technician Name",
+				class:"header spiff-form",
+				id:"Tech-Name-Header"
+			},
+			{
+				value:this.state.TechFName,
+				title:"First Name",
+				ChangeFunction:this.SetProperty,
+				data:"TechFName",
+				inputType:"TextInput",
+				id:"Tech-FName",
+				formItemClass:this.state.reqClasses.TechFName
+			},
+			{
+				value:this.state.TechLName,
+				title:"Last Name",
+				ChangeFunction:this.SetProperty,
+				data:"TechLName",
+				inputType:"TextInput",
+				id:"Tech-LName",
+				formItemClass:this.state.reqClasses.TechLName
+			},
+			{
+				value:"Customer Name",
+				class:"header spiff-form",
+				id:"Cust-Name-Header"
+			},
+			{
+				value:this.state.CustFName,
+				title:"First Name",
+				ChangeFunction:this.SetProperty,
+				data:"CustFName",
+				inputType:"TextInput",
+				id:"Cust-FName",
+				formItemClass:this.state.reqClasses.CustFName
+			},
+			{
+				value:this.state.CustLName,
+				title:"Last Name",
+				ChangeFunction:this.SetProperty,
+				data:"CustLName",
+				inputType:"TextInput",
+				id:"Cust-LName",
+				formItemClass:this.state.reqClasses.CustLName
+			},
+			{
+				value:"Client Street Address Only (Example: 123 Vogel St)",
+				class:"header spiff-form",
+				id:"Address-Header"
+			},
+			{
+				value:this.state.Address,
+				title:"Address Line 1",
+				ChangeFunction:this.SetProperty,
+				data:"Address",
+				inputType:"TextInput",
+				id:"Address-spiff-form",
+				formItemClass:this.state.reqClasses.Address
+			},
+			{
+				value:"WO Number",
+				class:"header spiff-form",
+				id:"WO-Header"
+			},
+			{
+				value:this.state.WO,
+				title:"What is the Job Number that you collected the money and completed the project/enrollment/referral on?",
+				ChangeFunction:this.SetProperty,
+				data:"WO",
+				inputType:"TextInput",
+				id:"WO-number",
+				formItemClass:this.state.reqClasses.WO
+			},
+			{
+				value:"What are you turning in a spiff for?",
+				class:"header spiff-form",
+				id:"Spiff-For-Header"
+			},
+			{
+				value:this.state.SpiffFor,
+				title:"Please indicate what you are turning in a spiff request for by selecting from this drop down list.",
+				ChangeFunction:this.SetProperty,
+				data:"SpiffFor",
+				inputType:"DropDown",
+				list:this.props.SpiffForList,
+				selected:this.props.SpiffForList[0],
+				id:"spiff-for"
+			},
+			{
+				value:"Who was the Equipment Referral turned over to?",
+				class:"header spiff-form",
+				id:"Refer-To-Header"
+			},
+			{
+				value:this.state.ReferTo,
+				title:"If this was an equipment referral, who did you call?",
+				ChangeFunction:this.SetProperty,
+				data:"ReferTo",
+				inputType:"DropDown",
+				list:this.props.ReferToList,
+				selected:this.props.ReferToList[this.props.ReferToList.length-1],
+				id:"refer-to"
+			},
+		]
+
+		return(<InputForm formdata = {formdata}/>)
+	}
+
     render() {
         return(
             <Card
@@ -94,121 +236,7 @@ export class SpiffForm extends Component {
                 id = "spiff-submit-form"
             >
                 <CardContent>
-                    <InputForm 
-                        formdata = {[
-                            {
-                                value:"Tech ID",
-                                class:"header spiff-form",
-                                id:"Tech-Header"
-                            },
-                            {
-                                selected:this.state.TechID,
-                                list:this.props.UserList,
-                                ChangeFunction:this.SetProperty,
-                                data:"TechID",
-                                inputType:"DropDown",
-                                id:"Tech-ID"
-                            },
-                            {
-                                value:"Technician Name",
-                                class:"header spiff-form",
-                                id:"Tech-Name-Header"
-                            },
-                            {
-                                value:this.state.TechFName,
-                                title:"First Name",
-                                ChangeFunction:this.SetProperty,
-                                data:"TechFName",
-                                inputType:"TextInput",
-                                id:"Tech-FName"
-                            },
-                            {
-                                value:this.state.TechLName,
-                                title:"Last Name",
-                                ChangeFunction:this.SetProperty,
-                                data:"TechLName",
-                                inputType:"TextInput",
-                                id:"Tech-LName"
-                            },
-                            {
-                                value:"Customer Name",
-                                class:"header spiff-form",
-                                id:"Cust-Name-Header"
-                            },
-                            {
-                                value:this.state.CustFName,
-                                title:"First Name",
-                                ChangeFunction:this.SetProperty,
-                                data:"CustFName",
-                                inputType:"TextInput",
-                                id:"Cust-FName"
-                            },
-                            {
-                                value:this.state.CustLName,
-                                title:"Last Name",
-                                ChangeFunction:this.SetProperty,
-                                data:"CustLName",
-                                inputType:"TextInput",
-                                id:"Cust-LName"
-                            },
-                            {
-                                value:"Client Street Address Only (Example: 123 Vogel St)",
-                                class:"header spiff-form",
-                                id:"Address-Header"
-                            },
-                            {
-                                value:this.state.Address,
-                                title:"Address Line 1",
-                                ChangeFunction:this.SetProperty,
-                                data:"Address",
-                                inputType:"TextInput",
-                                id:"Address-spiff-form"
-                            },
-                            {
-                                value:"WO Number",
-                                class:"header spiff-form",
-                                id:"WO-Header"
-                            },
-                            {
-                                value:this.state.WO,
-                                title:"What is the Job Number that you collected the money and completed the project/enrollment/referral on?",
-                                ChangeFunction:this.SetProperty,
-                                data:"WO",
-                                inputType:"TextInput",
-                                id:"WO-number"
-                            },
-                            {
-                                value:"What are you turning in a spiff for?",
-                                class:"header spiff-form",
-                                id:"Spiff-For-Header"
-                            },
-                            {
-                                value:this.state.SpiffFor,
-                                title:"Please indicate what you are turning in a spiff request for by selecting from this drop down list.",
-                                ChangeFunction:this.SetProperty,
-                                data:"SpiffFor",
-                                inputType:"DropDown",
-                                list:this.props.SpiffForList,
-                                selected:this.props.SpiffForList[0],
-                                id:"spiff-for"
-                            },
-                            {
-                                value:"Who was the Equipment Referral turned over to?",
-                                class:"header spiff-form",
-                                id:"Refer-To-Header"
-                            },
-                            {
-                                value:this.state.ReferTo,
-                                title:"If this was an equipment referral, who did you call?",
-                                ChangeFunction:this.SetProperty,
-                                data:"ReferTo",
-                                inputType:"DropDown",
-                                list:this.props.ReferToList,
-                                selected:this.props.ReferToList[this.props.ReferToList.length-1],
-                                id:"refer-to"
-                            },
-                        ]}
-                    />
+                    {this.GetForm()}
                 </CardContent>
                 <CardContent id="spiff-form-submit-row">
                     <TextButton 

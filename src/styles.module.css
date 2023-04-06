@@ -7,3 +7,7 @@
   font-size: 2em;
   text-align: center;
 }
+
+input.form-item-empty {
+	border-bottom: 2.5px solid rgb(157, 45, 45);
+}
