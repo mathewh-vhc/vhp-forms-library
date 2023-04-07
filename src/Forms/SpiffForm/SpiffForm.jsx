@@ -97,7 +97,7 @@ export class SpiffForm extends Component {
 				}]
 			}
             this.props.SaveFunction(newData)
-            this.props.CloseFunction()
+            this.props.CloseFunction(this.props.closeData)
         }
     }
 
