@@ -23,7 +23,7 @@ export class CustomerInformation extends Component {
 							data:"customerName",
 							inputType:"TextInput",
 							id:"customer-name",
-							formItemClass:"info-form"
+							formItemClass:this.props.formClasses.customerName||"info-form"
 						},
 						{
 							title:"Date:",
@@ -33,7 +33,7 @@ export class CustomerInformation extends Component {
 							inputType:"TextInput",
 							id:"form-date",
 							type:"date",
-							formItemClass:"info-form"
+							formItemClass:this.props.formClasses.date||"info-form"
 						}
 					]}
 				/>
@@ -41,12 +41,12 @@ export class CustomerInformation extends Component {
 					formdata = {[
 						{
 							title:"Phone:",
-							value:this.props.address,
+							value:this.props.phone,
 							ChangeFunction:this.props.SetProperty,
 							data:"phone",
 							inputType:"TextInput",
 							id:"form-phone",
-							formItemClass:"info-form"
+							formItemClass:this.props.formClasses.phone||"info-form"
 						},
 						{
 							title:"Email:",
@@ -55,7 +55,7 @@ export class CustomerInformation extends Component {
 							data:"email",
 							inputType:"TextInput",
 							id:"form-email",
-							formItemClass:"info-form"
+							formItemClass:this.props.formClasses.email||"info-form"
 						}
 					]}
 				/>}
@@ -68,7 +68,7 @@ export class CustomerInformation extends Component {
 							data:"address",
 							inputType:"TextInput",
 							id:"form-address",
-							formItemClass:"info-form"
+							formItemClass:this.props.formClasses.address||"info-form"
 						},
 						{
 							title:"City:",
@@ -77,7 +77,7 @@ export class CustomerInformation extends Component {
 							data:"city",
 							inputType:"TextInput",
 							id:"form-city",
-							formItemClass:"info-form"
+							formItemClass:this.props.formClasses.city||"info-form"
 						},
 						{
 							title:"Zip:",
@@ -87,7 +87,7 @@ export class CustomerInformation extends Component {
 							inputType:"TextInput",
 							id:"form-zip",
 							type:"number",
-							formItemClass:"info-form"
+							formItemClass:this.props.formClasses.zip||"info-form"
 						}
 					]}
 				/>}
