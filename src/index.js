@@ -11,3 +11,4 @@ export {TechnicianInformation} from './Forms/FormParts/TechnicianInformationForm
 export {TextAreaStubForm} from './Forms/FormParts/TextAreaStubForm'
 export {EmployeeInformation} from './Forms/FormParts/EmployeeInformationForm'
 export {SupportRequestInformation} from './Forms/FormParts/SupportRequestInformation'
+export {FormEndScreen} from './Forms/FormParts/FormEndScreen'

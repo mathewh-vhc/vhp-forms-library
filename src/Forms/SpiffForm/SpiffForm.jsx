@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputForm } from 'vhp-component-library';
+import { Image, InputForm } from 'vhp-component-library';
 import { Card } from 'vhp-component-library';
 import { CardContent } from 'vhp-component-library';
 import { TextButton } from 'vhp-component-library';
@@ -235,6 +235,16 @@ export class SpiffForm extends Component {
                 data={{minimize:null, close:this.props.closeData}}
                 id = "spiff-submit-form"
             >
+				<div className='print-only'>
+					<Image 
+						src = "https://www.vhpportal.com/repo/assets/images/Header_clean.png"
+						id = "header-logo"
+					/>
+					<BasicHeader 
+						text = "Service Division Spiff"
+						headerClass = "right-align"
+					/>
+				</div>
                 <CardContent>
                     {this.GetForm()}
                 </CardContent>
