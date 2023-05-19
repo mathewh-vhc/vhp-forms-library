@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 import { InputForm } from 'vhp-component-library';
 
+/**
+ * The SupportRequestInformation form component provides a basic template for creating user support forms and directing users towards a specific support flow or in-app support process.
+ * @argument {Function} ChangeFunction | the ChangeFunction assigned to each form item, triggered on input of a form item.
+ * @argument {Object} department | the text,value pair which describes the default state of the department DropDown.
+ * @argument {Array} departmentList | an array containing text,value pairs used in the department DropDown.
+ * @argument {Object} type | the text,value pair which describes the default state of the type DropDown.
+ * @argument {Array} typeList | an array containing text,value pairs used in the type DropDown.
+ * @argument {Object} category |  the text,value pair which describes the default state of the category DropDown.
+ * @argument {Array} categoryList | an array containing text,value pairs used in the category DropDown.
+ * @argument {Object} priority | the text,value pair which describes the default state of the type DropDown. Text describes the priority while value maps to the corresponding urgency in Teams.
+ * @argument {Object} priorityList | an array containing text,value pairs used in the type DropDown.
+ * @argument {Boolean} showDates | determines whether to show an ask date and an expect date in the form.
+ * @argument {String} askDate | the initial value which fills into the askDate field.
+ * @argument {String} expectDate | the initial value which fills into the expectDate field.
+ * @argument {Object} formReqs | optional table containing the formReqs for requiring input to be filled.
+ */
 export class SupportRequestInformation extends Component {
 	constructor(props) {
 		super(props)

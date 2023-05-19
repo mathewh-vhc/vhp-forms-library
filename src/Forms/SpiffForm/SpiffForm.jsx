@@ -5,8 +5,6 @@ import { CardContent } from 'vhp-component-library';
 import { TextButton } from 'vhp-component-library';
 import {BasicHeader} from 'vhp-component-library'
 
-import './Styles/SpiffForm.css'
-
 export class SpiffForm extends Component {
     constructor(props) {
         super(props)
@@ -114,7 +112,8 @@ export class SpiffForm extends Component {
 				ChangeFunction:this.SetProperty,
 				data:"TechID",
 				inputType:"DropDown",
-				id:"Tech-ID"
+				id:"Tech-ID",
+				searchable:true
 			},
 			{
 				value:"Technician Name",

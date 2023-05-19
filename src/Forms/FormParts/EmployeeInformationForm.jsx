@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import { InputForm } from 'vhp-component-library';
 
+/**
+ * The EmployeeInformation form component provides a basic template for filling out basic employee information.
+ * @argument {Function} ChangeFunction | the ChangeFunction assigned to each form item, triggered on input of a form item.
+ * @argument {String} user | the initial value of the user field.
+ * @argument {String} first | the initial value of the first name field.
+ * @argument {String} last | the initial value of the last name field.
+ * @argument {String} phone | the initial value of the phone number field.
+ * @argument {String} email | the initial value of the email field.
+ * @argument {Object} formReqs | optional table containing the formReqs for requiring input to be filled.
+ */
 export class EmployeeInformation extends Component {
 	constructor(props) {
 		super(props)

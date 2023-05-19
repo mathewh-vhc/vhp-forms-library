@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { InputForm } from 'vhp-component-library';
 /**
- * A form which provides fields for submitting customer information.
- * @param {Function} SetProperty | the function called by each property, giving the key as a parameter
- * @param {Boolean} ContactInformation | determines whether to provide the contact information fields
- * @param {Boolean} AddressInformation | determines whether to provide the address information fields
+ * The CustomerInformation form component provides a basic template for filling out basic customer information, with the option of including contact and address information.
+ * @argument {Function} SetProperty | the function called by each property, giving the key as a parameter
+ * @argument {Boolean} ContactInformation | determines whether to provide the contact information fields
+ * @argument {Boolean} AddressInformation | determines whether to provide the address information fields
+ * @argument {String} customerName | the initial value of the customer name field.
+ * @argument {String} date | the initial value of the date field, using HTML input type *date*.
+ * @argument {String} phone | the initial value of the phone number field, located in the ContactInformation section.
+ * @argument {String} email | the initial value of the email field, located in the ContactInformation section.
+ * @argument {String} address | the initial value of the address field, located in the AddressInformation section.
+ * @argument {String} city | the initial value of the city field, located in the AddressInformation section.
+ * @argument {String}zip | the initial value of the zip code field, located in the AddressInformation section.
  */
 export class CustomerInformation extends Component {
     constructor(props) {
