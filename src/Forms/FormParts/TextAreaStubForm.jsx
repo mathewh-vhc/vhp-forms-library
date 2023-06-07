@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CardContent, InputForm } from 'vhp-component-library'
+import { InputForm } from 'vhp-component-library'
 
 /**
  * The TextAreaStub form component provides a basic template for creating subject/body forms, where the first part of the form is a TextInput and the second part is a TextArea.
@@ -65,9 +65,9 @@ export class TextAreaStubForm extends Component {
 
     render() {
         return(
-			<CardContent cardContentClass = "text-area-stub-cont">
+			<>
 				{this.GetForm()}
-			</CardContent>
+			</>
         );
     }
 }
